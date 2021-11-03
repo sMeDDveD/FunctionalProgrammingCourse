@@ -68,7 +68,7 @@ getKey (Valueable key _) = key
 getKey (Keyable key) = key
 
 keyOp :: (k -> k -> t) -> MapItem k v -> MapItem k v -> t
-keyOp op lhs rhs = op (getKey lhs) (getKey rhs)
+keyOp op = on op getKey
 
 instance Eq k => Eq (MapItem k v) where
   (==) = keyOp (==)
